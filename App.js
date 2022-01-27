@@ -1,20 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, Button, StatusBar, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import ViewComponentPage from './components/viewComponent';
 
-export default function App() {
+export default App = () => {
+
+	const [countNumber, setDataNumber] = useState(0);
+	const url = 'http://api.easy4.fun/citats';
+	
+	const onPressEventSuperPyper = () =>{
+		setDataNumber(countNumber + 1);
+	}
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+	<View>
+		<StatusBar barStyle='dark-content' />
+		<Text style={stylesMain.headerMain}>{countNumber}</Text>
+		<Button title='НАЖИМАЙ КНОПКУ'
+		onPress={
+			onPressEventSuperPyper
+		}/>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+		<ViewComponentPage />
+	</View>
+  );
+};
+
+const stylesMain = StyleSheet.create({
+	headerMain:{
+		fontSize:40,
+		alignSelf:'center',
+		marginTop:'5%'
+	}
 });
